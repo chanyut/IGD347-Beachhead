@@ -69,7 +69,7 @@ namespace Beachhead.Weapons {
 			GameObject bulletShellGO = Instantiate(BulletShellPrefab, BulletShellProxy.position, Quaternion.identity) as GameObject;
 			Rigidbody rgbd = bulletShellGO.GetComponent<Rigidbody>();
 			rgbd.AddForce(new Vector3( 5 * Random.value * Random.Range(-1, 1), 
-			                          5 + (1 * Random.value), 
+			                          10 + (1 * Random.value), 
 			                          -(10 + (5 * Random.value))),
 			              ForceMode.Impulse);
 			Destroy(bulletShellGO, 1f);

@@ -22,6 +22,10 @@ namespace Beachhead.Enemies {
 		Transform mMoveToPoint;
 		SpiderWarriorStateEnum mState;
 
+		void Awake() {
+			mEnemyType = BHEnemyTypeEnum.SpiderWarrior;
+		}
+
 		protected override void Start () {
 
 			mMoveToPoint = CurrentPath.GetNextPoint(null);
@@ -51,7 +55,7 @@ namespace Beachhead.Enemies {
 					
 					Vector3 diff = mMoveToPoint.position - transform.position;
 					float distance = diff.magnitude;
-					if (distance <= 2f) {
+					if (distance <= 1f) {
 						Transform nextPoint = CurrentPath.GetNextPoint(mMoveToPoint);
 						mMoveToPoint = nextPoint;
 					}

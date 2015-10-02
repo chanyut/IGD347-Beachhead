@@ -3,6 +3,11 @@ using System.Collections;
 
 namespace Beachhead.Enemies {
 
+	public enum BHEnemyTypeEnum {
+		Unclassified,
+		SpiderWarrior
+	}
+
 	public class BHEnemy : MonoBehaviour {
 		
 		public string EnemyName;
@@ -13,9 +18,11 @@ namespace Beachhead.Enemies {
 		public float Shield;
 		public float ShieldDamage;
 
+		protected BHEnemyTypeEnum mEnemyType;
+
 		// Use this for initialization
 		protected virtual void Start () {
-		
+			
 		}
 		
 		// Update is called once per frame

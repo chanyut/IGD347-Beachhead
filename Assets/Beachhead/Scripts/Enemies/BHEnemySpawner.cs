@@ -5,38 +5,36 @@ namespace Beachhead.Enemies {
 
 	public class BHEnemySpawner : MonoBehaviour {
 
-		public GameObject EnemyPrefab;
 		public Transform SpawnPoint;
 
-		public float DelayRangeStart;
-		public float DelayRangeEnd;
+		public float Delay;
+		public float Interval;
 		public int Limit;
 
 		float mTimer;
 		int mCounter;
 
 		void Start() {
-			float d = DelayRangeEnd - DelayRangeStart;
-			mTimer = DelayRangeStart + (Random.value * d);
+			mTimer = Delay;
 			mCounter = 0;
 		}
 
 		void Update() {
+			if (mCounter >= Limit) {
+				Destroy(gameObject);
+				return;
+			}
+
 			mTimer -= Time.deltaTime;
 			if (mTimer <= 0) {
-
-				GameObject enemyGO = Instantiate(EnemyPrefab, SpawnPoint.position, Quaternion.identity) as GameObject;
+				GameObject enemyGO = CreateEnemy();
 				mCounter += 1;
-
-				if (mCounter >= Limit) {
-					Destroy(gameObject);
-					return;
-				}
-
-				float d = DelayRangeEnd - DelayRangeStart;
-				mTimer = DelayRangeStart + (Random.value * d);
+				mTimer = Interval;
 			}
 		}
 
+		protected virtual GameObject CreateEnemy() {
+			return null;
+		}
 	}
 }
